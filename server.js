@@ -4,9 +4,10 @@ const db = require('./config/connection')
 
 // Import our view_routes
 const view_routes = require('./controllers/view_routes');
+const user_routes = require('./controllers/user_routes');
 
 // Create the port number and prepare for heroku with the process.env.PORT value
-const PORT = process.env.PORT || 3333;
+const PORT = process.env.PORT || 3001;
 
 // Create the server app
 const app = express();
@@ -20,6 +21,9 @@ app.use(express.json());
 
 // Load our view routes at the root level '/'
 app.use('/', view_routes);
+
+// Load our user routes at the root level '/'
+app.use('/auth', user_routes);
 
 // app.use('/auth', user_routes);
 

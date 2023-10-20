@@ -16,4 +16,4 @@ const connection = new Sequelize(
 
 
 // Export the connection object
-module.exports = Sequelize;
+module.exports = connection;

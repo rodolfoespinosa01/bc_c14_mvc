@@ -1,0 +1,171 @@
+/* RESETS */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+/* GLOBAL CLASSES */
+.text-center {
+  text-align: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.flexC {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexH {
+  display: flex;
+}
+
+.darkBackground {
+background-color: #210f0d
+}
+
+.darkText {
+  color: #210f0d
+}
+
+.lightBackground {
+  background-color: #d9e9d4
+  }
+  
+  .lightText {
+    color: #d9e9d4
+  }
+
+  /* Nav */
+
+  nav {
+    height: 110px;
+  }
+
+  a:hover {
+    opacity: 50%;
+  }
+
+  .navLink {
+    padding: 15px;
+    margin-left: 15px;
+    }
+
+  #logo {
+    display: inline-block;
+    width: 200px;
+    padding: 5px 10px;
+    background-color: #d9e9d4;
+    color: #210f0d;
+    border: 2px solid #d9e9d4;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 4px 4px 10px #a8a6a7;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+    margin-left: 30px; 
+  }
+  
+  #logo:hover {
+    background-color: rgba(217, 233, 212, 0.8); /* Change opacity on hover */
+    color: #210f0d; /* Text color remains the same on hover */
+    box-shadow: 4px 4px 10px #a8a6a7; /* Shadow remains the same on hover */
+  }
+  
+  #logo h2 {
+    margin: 0;
+  }
+
+
+  /* Post */
+
+  .post {
+    border-color: #210f0d;
+    border-style: solid;
+    border-width: 3px;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 15px;
+    height: 100%;
+  }
+
+  .postHeader {
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .postedBy {
+  margin: 0;
+    font-size:x-small;
+  }
+
+  .postText {
+    margin: 13px;
+    font-weight:500;
+  }
+
+  /* Login */
+  .formHeader {
+    justify-content: space-between;
+    padding: 8px;
+  }
+
+  .formFields {
+    padding: 10px;
+  }
+
+  .formButton {
+    margin-top: 11px;
+    width: 100%;
+    height: 32px;
+    color: #dfdfe8;
+    border-radius: 5px;
+    background-color: grey;
+    cursor: pointer;
+  }
+
+  .formInstead {
+    font-size:small;
+    margin-top: 4px;
+  }
+
+  .formInput {
+    margin-top: 5px;
+    height: 35px;
+    border-width: 0;
+  }
+
+  .labelText {
+    margin-top: 4px;
+  }
+
+ 
+
+
+
+ 
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
