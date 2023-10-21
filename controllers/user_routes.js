@@ -5,17 +5,17 @@ const User = require('../models/User.js');
 // The route will respond with a message of "User added successfully"
 
 router.post('/register', async (req, res) => {
-  const data = req.body;
+  console.log(req.body)
 
-  try {
-    await User.create(req.body);
+  // try {
+  //   await User.create(req.body);
     
-    res.redirect('/');
-  } catch (error) {
-    console.log(error.errors);
-    res.redirect('/register')
+  //   res.redirect('/');
+  // } catch (error) {
+  //   console.log(error.errors);
+  //   res.redirect('/register')
 
-  }
+  // }
 });
 
 module.exports = router;

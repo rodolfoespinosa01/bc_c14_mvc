@@ -3,7 +3,7 @@
         </div>
       </nav>
     </header>
-    <form id="registerForm" class="post flexC">
+<form action="/auth/register" method="POST" class="post flexC">
   <div class="formHeader lightText darkBackground flexH">
     <h4>Register</h4>
   </div>
@@ -12,8 +12,10 @@
       <label for="username" class="labelText darkText">Username</label>
       <input class="formInput" type="text" id="username" name="email" required>
     </div>
-    <div class="flexC">
-      <label for="password" class="labelText darkText">Password</label>
+  <div class="flexC">
+    <label for="password" class="labelText darkText">
+      Password
+    </label>
       <input class="formInput" type="password" id="password" name="password" required>
     </div>
     <div class="flexC">

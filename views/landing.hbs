@@ -12,20 +12,3 @@
         between the Model layer for data, the View layer for design, and the Controller layer for application logic</h6>
 </div>
 
-<p>{{name}}</p>
-
-<ul>
-  {{#each fruits}}
-    <li>{{this}}</li>
-  {{/each}}
-</ul>
-
-<section>
-  {{#each data}}
-    <div>
-      {{!-- you can put just 'name' below since you are referring to an array of objects --}}
-      <h3>Name: {{this.name}}</h3> 
-      <p>Age: {{this.age}}</p>
-    </div>
-  {{/each}}
-</section>

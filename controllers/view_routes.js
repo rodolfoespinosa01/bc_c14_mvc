@@ -6,18 +6,7 @@ const router = require('express').Router();
 // landing page
 router.get('/', (req, res) => {
   res.render('landing', {
-    name: 'Rodolfo',
-    fruits: ['maracuya', 'guineo verde', 'mango', 'piña'],
-    data: [
-      {
-        name: 'Bob',
-        age: 99
-    },
-    {
-      name: 'Rodolfo',
-      age: 32
-    }   
-  ]
+  
   });
 });
 

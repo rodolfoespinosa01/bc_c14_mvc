@@ -17,8 +17,11 @@ const app = express();
 // Open the static channel for our browser assets - ie. express.static on the public folder
 app.use(express.static('./public'));
 
-// Allow JSON to be sent from the client
-app.use(express.json());
+// Allow JSON to be sent from the client - this is the way it was sent when we used html
+// app.use(express.json());
+
+// this is how we need to send it when using handlebars since it sends the data through urlencoding
+app.use(express.urlencoded({extended: false}));
 
 
 // Load our view routes at the root level '/'
