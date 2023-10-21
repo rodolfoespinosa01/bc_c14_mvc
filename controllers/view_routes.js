@@ -1,27 +1,27 @@
 // Create an express router instance object
 const router = require('express').Router();
-const path = require('path')
+
 
 
 // landing page
 router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../views/landing.html'));
+  res.render('landing', {name: 'Rodolfo'});
 });
 
 
 // login page
 router.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, '../views/login.html'));
+  res.render('login');
 });
 
 // register page
 router.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname, '../views/register.html'));
+  res.render('register');
 });
 
 // dashboard
 router.get('/dashboard', (req, res) => {
-  res.sendFile(path.join(__dirname, '../views/dashboard.html'));
+  res.render('dashboard');
 });
 
 

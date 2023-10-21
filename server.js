@@ -1,6 +1,8 @@
 // Import express
 const express = require('express');
-const db = require('./config/connection')
+const db = require('./config/connection');
+
+const { engine }=require('express-handlebars');
 
 // Import our view_routes
 const view_routes = require('./controllers/view_routes');
@@ -22,6 +24,9 @@ app.use(express.json());
 // Load our view routes at the root level '/'
 app.use('/', view_routes);
 
+app.engine('.hbs', engine({extname: '.hbs'}));
+app.set('view engine', '.hbs');
+
 // Load our user routes at the root level '/'
 app.use('/auth', user_routes);
 
@@ -32,4 +37,4 @@ db.sync({force: false})
 .then(() => {
   // Start the server and log the port that it started on
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-})
+});
