@@ -1,13 +1,24 @@
 // Create an express router instance object
 const router = require('express').Router();
+const User =require('../models/User')
 
 
 
 // landing page
-router.get('/', (req, res) => {
-  res.render('landing', {
+router.get('/', async (req, res) => {
+  const user = await User.findByPk(req.session.user_id)
   
+  console.log(req.session.user_id);
+  if(user) {
+  res.render('landing', {
+    user: {
+      id: user.id,
+      email: user.email
+    }
   });
+} else {
+  res.render('landing');
+}
 });
 
 

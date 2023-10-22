@@ -4,6 +4,8 @@ const db = require('./config/connection');
 
 const { engine }=require('express-handlebars');
 
+const session = require('express-session');
+
 // Import our view_routes
 const view_routes = require('./controllers/view_routes');
 const user_routes = require('./controllers/user_routes');
@@ -22,6 +24,14 @@ app.use(express.static('./public'));
 
 // this is how we need to send it when using handlebars since it sends the data through urlencoding
 app.use(express.urlencoded({extended: false}));
+
+
+// Load express-session middleware
+app.use(session({
+  secret: 'secretPasswordTest',
+  resave: false,
+  saveUninitialized: true
+}))
 
 
 // Load our view routes at the root level '/'

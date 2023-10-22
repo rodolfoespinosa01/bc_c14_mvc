@@ -12,13 +12,21 @@
     <header>
       <nav class="darkBackground flexC">
         <div class="flexH">
+
+          {{#if user}}
           <a href="http://localhost:3001/" class="navLink lightText">Home</a>
           <a href="http://localhost:3001/dashboard" class="navLink lightText">Dashboard</a>
-          <a href="http://localhost:3001/login" class="navLink lightText">Login</a>
           <a href="" class="navLink lightText">Logout</a>
+          {{else}}
+          <a href="http://localhost:3001/" class="navLink lightText">Home</a>
+          <a href="http://localhost:3001/login" class="navLink lightText">Login</a>
+          {{/if}}
+
+          
+         
         </div>
-        
-    {{{body}}}
+
+        {{{body}}}
   </body>
 
 </html>
