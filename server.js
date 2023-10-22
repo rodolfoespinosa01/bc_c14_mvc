@@ -9,6 +9,8 @@ const session = require('express-session');
 // Import our view_routes
 const view_routes = require('./controllers/view_routes');
 const user_routes = require('./controllers/user_routes');
+const post_routes = require('./controllers/post_routes');
+const comment_routes = require('./controllers/comment_routes');
 
 // Create the port number and prepare for heroku with the process.env.PORT value
 const PORT = process.env.PORT || 3001;
@@ -35,7 +37,7 @@ app.use(session({
 
 
 // Load our view routes at the root level '/'
-app.use('/', view_routes);
+app.use('/', [view_routes, post_routes, comment_routes]);
 
 app.engine('.hbs', engine({extname: '.hbs'}));
 app.set('view engine', '.hbs');

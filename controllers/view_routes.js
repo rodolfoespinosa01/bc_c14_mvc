@@ -26,7 +26,7 @@ async function authenticate(req, res, next) {
 
   if(user_id){
     const user = await User.findByPk(req.session.user_id, {
-      attributes: ['id', 'email']
+      attributes: ['id', 'username']
     });
 
     req.user = user.get({plain: true});
@@ -35,7 +35,7 @@ async function authenticate(req, res, next) {
 
   next();
   
-}
+};
 
 // landing page
 router.get('/', authenticate, async (req, res) => {
@@ -68,12 +68,16 @@ router.get('/post', isAuthenticated, authenticate, (req, res) => {
   res.render('post', {
     user: req.user
   });
+
+  req.session.errors = [];
 });
 
 router.get('/comment', isAuthenticated, authenticate, (req, res) => {
   res.render('comment', {
     user: req.user
   });
+
+  req.session.errors = [];
 });
 
 // dashboard

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const User = require('../models/User.js');
 
-// Post request that retrieves the form data email, password - and creates a new user in the database using our user model.
+// Post request that retrieves the form data username, password - and creates a new user in the database using our user model.
 // The route will respond with a message of "User added successfully"
 
 router.post('/register', async (req, res) => {
@@ -24,13 +24,13 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   const user = await User.findOne({
     where: {
-      email: req.body.email
+      username: req.body.username
     }
   });
 
-  // User not found with the email address provided
+  // User not found with the username provided
   if(!user) {
-    req.session.errors = ['No user found with that email address'];
+    req.session.errors = ['No user found with that username'];
 
     return res.redirect('/login');
   }
