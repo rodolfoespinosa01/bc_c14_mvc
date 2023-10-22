@@ -7,11 +7,15 @@ const User = require('../models/User.js');
 router.post('/register', async (req, res) => {
  
   try {
-    await User.create(req.body);
+    const user = await User.create(req.body);
+
+
+    req.session.user_id = user.id;
     
     res.redirect('/');
   } catch (error) {
-    console.log(error.errors);
+    //Set our session errors array, to an array of just Sequelize error message strings
+    req.session.errors = error.errors.map(errorObj => errorObj.message);
     res.redirect('/register')
 
   }
@@ -24,19 +28,32 @@ router.post('/login', async (req, res) => {
     }
   });
 
+  // User not found with the email address provided
+  if(!user) {
+    req.session.errors = ['No user found with that email address'];
+
+    return res.redirect('/login');
+  }
+
+  const passIsValid = await user.validatePass(req.body.password);
+
+  //  Check if pw is invalid
+  if(!passIsValid) {
+    req.session.errors = ['Password is incorrerect.'];
+
+    return res.redirect('/login');
+  }
+
+  // Log the user in
   req.session.user_id = user.id;
 
   res.redirect('/')
- 
-  // try {
-  //   await User.create(req.body);
-    
-  //   res.redirect('/');
-  // } catch (error) {
-  //   console.log(error.errors);
-  //   res.redirect('/login')
-
-  // }
 });
+
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+
+  res.redirect('/');
+})
 
 module.exports = router;

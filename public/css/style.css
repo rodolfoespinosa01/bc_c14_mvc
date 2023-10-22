@@ -143,11 +143,30 @@ background-color: #210f0d
     border-width: 0;
   }
 
+  form p.error {
+    color: red;
+  }
+
   .labelText {
     margin-top: 4px;
   }
 
- 
+  /* Comment and Post Blue Border */
+.blueBorder {
+  border-color: #68a5db;
+  border-style: solid;
+  border-width:3.7px;
+}
+
+/* Comment Height */
+ .formInputCP {
+  height: 90px;
+ }
+
+ #commentHeader {
+  background-color: #210f0d;
+  height: 20px;
+ }
 
 
 

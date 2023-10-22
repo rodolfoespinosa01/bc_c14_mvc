@@ -9,7 +9,9 @@ const connection = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: '127.0.0.1',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    // Turn off SQL logging in the terminal
+    logging: false
   }
 );
 

@@ -1,0 +1,28 @@
+<a href="/">
+  <div id="logo" class="lightBackground">
+    <h2 class="darkText">The Tech Blog</h2>
+  </div>
+</a>
+</nav>
+</header>
+<form action="/comment" method="POST" class="post flexC">
+  <div id="commentHeader" class="formHeader lightText darkBackground flexH">
+    
+  </div>
+  <div class="formFields">
+
+     {{#each errors}}
+    <p class="text-center error">{{this}}</p>
+    {{/each}}
+
+    <div class="flexC">
+      <label for="username" class="labelText darkText">Comment</label>
+      <input class="formInputCP blueBorder" type="text" id="" name="comment" required>
+    </div>
+    
+    <div class="flexC">
+      <button type="submit" class="blueBorder formButton">Submit</button>
+   
+    </div>
+  </div>
+</form>

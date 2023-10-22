@@ -15,7 +15,7 @@ User.init({
     allowNull: false,
     unique: {
       args: true,
-      msg: 'That email address is already in use.'
+      msg: 'Email address is already in use.'
     },
     validate: {
       isEmail: true
@@ -27,7 +27,7 @@ User.init({
     validate: {
       len: {
         args: 6,
-        msg: 'Your password must be at least 6 characters in length.'
+        msg: 'Your password must be at least 6 characters long.'
       }
     }
   }
@@ -43,6 +43,12 @@ User.init({
     }
   }
 });
+
+User.prototype.validatePass = async function (formPassword) {
+  const isValid = await compare(formPassword, this.password);
+
+  return isValid;
+}
 
 // Export the User model
 module.exports = User;

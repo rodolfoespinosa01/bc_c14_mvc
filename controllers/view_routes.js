@@ -1,40 +1,87 @@
 // Create an express router instance object
 const router = require('express').Router();
-const User =require('../models/User')
+const User = require('../models/User')
 
+// block an auth page if user is already logged in
+function isLoggedIn(req, res, next) {
+  if (req.session.user_id){
+    return res.redirect('/')
+  }
 
+  next ();
+}
+
+// block a route if a user is not logged in
+function isAuthenticated(req, res, next) {
+  if(!req.session.user_id){
+    return res.redirect('/login')
+  }
+
+  next();
+}
+
+// attach user data to the request if they are logged in
+async function authenticate(req, res, next) {
+  const user_id = req.session.user_id;
+
+  if(user_id){
+    const user = await User.findByPk(req.session.user_id, {
+      attributes: ['id', 'email']
+    });
+
+    req.user = user.get({plain: true});
+
+  }
+
+  next();
+  
+}
 
 // landing page
-router.get('/', async (req, res) => {
-  const user = await User.findByPk(req.session.user_id)
+router.get('/', authenticate, async (req, res) => {
   
-  console.log(req.session.user_id);
-  if(user) {
-  res.render('landing', {
-    user: {
-      id: user.id,
-      email: user.email
-    }
-  });
-} else {
-  res.render('landing');
-}
-});
-
-
-// login page
-router.get('/login', (req, res) => {
-  res.render('login');
+  res.render('landing', {user: req.user});
 });
 
 // register page
-router.get('/register', (req, res) => {
-  res.render('register');
+router.get('/register', isLoggedIn, authenticate, (req, res) => {
+  res.render('register', {
+    errors: req.session.errors,
+    user: req.user
+  });
+
+  req.session.errors = [];
+});
+
+// login page
+router.get('/login', isLoggedIn, authenticate, (req, res) => {
+  res.render('login', {
+    errors: req.session.errors,
+    user: req.user
+  });
+
+  req.session.errors = [];
+});
+
+
+router.get('/post', isAuthenticated, authenticate, (req, res) => {
+  res.render('post', {
+    user: req.user
+  });
+});
+
+router.get('/comment', isAuthenticated, authenticate, (req, res) => {
+  res.render('comment', {
+    user: req.user
+  });
 });
 
 // dashboard
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard');
+router.get('/dashboard', isAuthenticated, authenticate, (req, res) => {
+  res.render('dashboard', {
+    errors: req.session.errors,
+    user: req.user
+  });
 });
 
 

@@ -8,8 +8,14 @@
 <form action="/auth/register" method="POST" class="post flexC">
   <div class="formHeader lightText darkBackground flexH">
     <h4>Register</h4>
+
   </div>
   <div class="formFields">
+
+    {{#each errors}}
+    <p class="text-center error">{{this}}</p>
+    {{/each}}
+
     <div class="flexC">
       <label for="username" class="labelText darkText">Username</label>
       <input class="formInput" type="text" id="username" name="email" required>
