@@ -5,11 +5,13 @@
 </a>
 </nav>
 </header>
+{{#each posts}}
 <div class="post flexC">
   <div class="postHeader lightText darkBackground flexH">
-    <h4>Why MVC is so important</h4>
-    <p class="postedBy">Posted by Xandromus on 5/8/2020</p>
+    <h4>{{title}}</h4>
+    <p class="postedBy">Posted by {{author.username}} on {{date}}</p>
   </div>
-  <h6 class="postText darkText">MVC allows developers to maintain a true separation of concerns, devising their code
-    between the Model layer for data, the View layer for design, and the Controller layer for application logic</h6>
+  <h6 class="postText darkText">{{content}}</h6>
 </div>
+{{/each}}
+

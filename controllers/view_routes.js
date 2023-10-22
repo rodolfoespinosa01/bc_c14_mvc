@@ -1,19 +1,20 @@
 // Create an express router instance object
 const router = require('express').Router();
-const User = require('../models/User')
+const User = require('../models/User');
+const Post = require('../models/Post');
 
 // block an auth page if user is already logged in
 function isLoggedIn(req, res, next) {
-  if (req.session.user_id){
+  if (req.session.user_id) {
     return res.redirect('/')
   }
 
-  next ();
+  next();
 }
 
 // block a route if a user is not logged in
 function isAuthenticated(req, res, next) {
-  if(!req.session.user_id){
+  if (!req.session.user_id) {
     return res.redirect('/login')
   }
 
@@ -24,23 +25,32 @@ function isAuthenticated(req, res, next) {
 async function authenticate(req, res, next) {
   const user_id = req.session.user_id;
 
-  if(user_id){
+  if (user_id) {
     const user = await User.findByPk(req.session.user_id, {
       attributes: ['id', 'username']
     });
 
-    req.user = user.get({plain: true});
+    req.user = user.get({ plain: true });
 
   }
 
   next();
-  
+
 };
 
 // landing page
 router.get('/', authenticate, async (req, res) => {
-  
-  res.render('landing', {user: req.user});
+  const posts = await Post.findAll({
+    include: {
+      model: User,
+      as: 'author'
+    }
+  });
+
+  res.render('landing', {
+    user: req.user,
+    posts: posts.map(p => p.get({ plain: true }))
+  }); 
 });
 
 // register page
