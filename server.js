@@ -30,7 +30,7 @@ app.use(express.urlencoded({extended: false}));
 
 // Load express-session middleware
 app.use(session({
-  secret: 'process.env.SESSION_SECRET',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
