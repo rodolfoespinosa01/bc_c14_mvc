@@ -75,9 +75,9 @@ background-color: #210f0d
   }
   
   #logo:hover {
-    background-color: rgba(217, 233, 212, 0.8); /* Change opacity on hover */
-    color: #210f0d; /* Text color remains the same on hover */
-    box-shadow: 4px 4px 10px #a8a6a7; /* Shadow remains the same on hover */
+    background-color: rgba(217, 233, 212, 0.8); 
+    color: #210f0d; 
+    box-shadow: 4px 4px 10px #a8a6a7; 
   }
   
   #logo h2 {
@@ -120,7 +120,7 @@ background-color: #210f0d
   }
   
   form.post {
-    margin-bottom: 60px; /* Add some margin to make room for the button below */
+    margin-bottom: 60px; 
   }
   
   #newPostBTN {

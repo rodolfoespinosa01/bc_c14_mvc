@@ -21,9 +21,6 @@ const app = express();
 // Open the static channel for our browser assets - ie. express.static on the public folder
 app.use(express.static('./public'));
 
-// Allow JSON to be sent from the client - this is the way it was sent when we used html
-// app.use(express.json());
-
 // this is how we need to send it when using handlebars since it sends the data through urlencoding
 app.use(express.urlencoded({extended: false}));
 
@@ -41,14 +38,13 @@ app.use('/', [view_routes, post_routes, comment_routes]);
 
 app.engine('.hbs', engine({extname: '.hbs'}));
 app.set('view engine', '.hbs');
-
+ 
 // Load our user routes at the root level '/'
 app.use('/auth', user_routes);
 
-// app.use('/auth', user_routes);
 
 // Sync and create tables
-db.sync({force: true})
+db.sync({force: false})
 .then(() => {
   // Start the server and log the port that it started on
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
