@@ -66,7 +66,7 @@ router.get('/editPost/:postId', isAuthenticated, authenticate, async (req, res) 
 });
 
 // Update a post (POST)
-router.post('/updatePost/:postId', isAuthenticated, authenticate, async (req, res) => {
+router.put('/updatePost/:postId', isAuthenticated, authenticate, async (req, res) => {
   const postId = req.params.postId;
   const userId = req.user.id;
   const { title, content } = req.body;
@@ -87,25 +87,25 @@ router.post('/updatePost/:postId', isAuthenticated, authenticate, async (req, re
   }
 });
 
-// router.delete('/deletePost/:postId', isAuthenticated, authenticate, async (req, res) => {
-//   const postId = req.params.postId;
-//   const userId = req.user.id;
+router.delete('/deletePost/:postId', isAuthenticated, authenticate, async (req, res) => {
+  const postId = req.params.postId;
+  const userId = req.user.id;
 
-//   // Verify that the post belongs to the user before deleting
-//   const post = await Post.findOne({
-//     where: { id: postId, author_id: userId }
-//   });
+  // Verify that the post belongs to the user before deleting
+  const post = await Post.findOne({
+    where: { id: postId, author_id: userId }
+  });
 
-//   if (post) {
-//     // Delete the post
-//     await post.destroy();
+  if (post) {
+    // Delete the post
+    await post.destroy();
 
-//     // Redirect to a different page or send a response as needed
-//     res.redirect('/dashboard');
-//   } else {
-//     res.status(404).send("Post not found or unauthorized to delete.");
-//   }
-// });
+    // Redirect to a different page or send a response as needed
+    res.redirect('/dashboard');
+  } else {
+    res.status(404).send("Post not found or unauthorized to delete.");
+  }
+});
 
 
 

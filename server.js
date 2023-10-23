@@ -1,6 +1,7 @@
 // Import express
 const express = require('express');
 const db = require('./config/connection');
+const methodOverride = require('method-override');
 
 const { engine }=require('express-handlebars');
 
@@ -24,6 +25,8 @@ app.use(express.static('./public'));
 // this is how we need to send it when using handlebars since it sends the data through urlencoding
 app.use(express.urlencoded({extended: false}));
 
+// Method Override Package to change Method in form
+app.use(methodOverride('_method'));
 
 // Load express-session middleware
 app.use(session({
