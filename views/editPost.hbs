@@ -1,0 +1,38 @@
+<a href="/">
+  <div id="logo" class="lightBackground">
+    <h2 class="darkText">The Tech Blog</h2>
+  </div>
+</a>
+</nav>
+</header>
+<div class="form-container">
+<form action="/updatePost/{{post.id}}" method="POST" class="post flexC">
+  <div class="formHeader lightText darkBackground flexH">
+    <h4>Edit Post</h4>
+
+  </div>
+  <div class="formFields">
+
+     {{#each errors}}
+    <p class="text-center error">{{this}}</p>
+    {{/each}}
+
+
+    <div class="flexC">
+      <label for="title" class="labelText darkText">Title</label>
+      <input class="formInput blueBorder" type="text" id="title" name="title" required value ="{{post.title}}">
+    </div>
+    <div class="flexC">
+      <label for="content" class="labelText darkText">Content</label>
+      <input class="formInputCP blueBorder" type="text" id="content" name="content" required value="{{post.content}}">
+    </div>
+    <div class="flexC">
+      <button id="update" type="submit" class="formButton">Update</button>
+    </div>
+    <div class="flexC">
+      <button id="delete" type="submit" class="formButton" formaction="/deletePost/{{post.id}}">Delete</button>
+    </div>
+  
+  </div>
+</form>
+</div>

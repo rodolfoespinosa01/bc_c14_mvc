@@ -5,4 +5,22 @@
     </a>
   </nav>
 </header>
-<button class="lightText darkBackground" id="newPostBTN">+ New Post</button>
+<div id="dashboard-container" class="flexC dashboardPost">
+{{#each posts}}
+<a href="/editPost/{{id}}">
+<section class="flexH align-center greyPost">
+  <div>
+  {{title}}
+  </div>
+  <div>
+  {{date}}
+  </div>
+</section>
+</a>
+{{/each}}
+</div>
+<div class="button-container">
+<a href="http://localhost:3001/post">
+<button class=" darkBackground" id="newPostBTN">+ New Post</button>
+</a>
+</div>

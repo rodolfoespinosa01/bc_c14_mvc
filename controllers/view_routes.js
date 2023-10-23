@@ -90,11 +90,28 @@ router.get('/comment', isAuthenticated, authenticate, (req, res) => {
   req.session.errors = [];
 });
 
-// dashboard
-router.get('/dashboard', isAuthenticated, authenticate, (req, res) => {
+// // dashboard
+// router.get('/dashboard', isAuthenticated, authenticate, (req, res) => {
+//   res.render('dashboard', {
+//     errors: req.session.errors,
+//     user: req.user
+//   });
+// });
+
+router.get('/dashboard', isAuthenticated, authenticate, async (req, res) => {
+  const userId = req.user.id; // Get the current user's ID
+
+  const posts = await Post.findAll({
+    where: { author_id: userId }, // Use the actual column name that links posts to users
+    include: {
+      model: User,
+      as: 'author'
+    }
+  });
+
   res.render('dashboard', {
-    errors: req.session.errors,
-    user: req.user
+    user: req.user,
+    posts: posts.map(p => p.get({ plain: true }))
   });
 });
 
