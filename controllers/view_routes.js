@@ -90,14 +90,8 @@ router.get('/comment', isAuthenticated, authenticate, (req, res) => {
   req.session.errors = [];
 });
 
-// // dashboard
-// router.get('/dashboard', isAuthenticated, authenticate, (req, res) => {
-//   res.render('dashboard', {
-//     errors: req.session.errors,
-//     user: req.user
-//   });
-// });
 
+// dashbaord view
 router.get('/dashboard', isAuthenticated, authenticate, async (req, res) => {
   const userId = req.user.id; // Get the current user's ID
 

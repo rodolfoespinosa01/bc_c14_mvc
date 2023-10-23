@@ -102,6 +102,10 @@ background-color: #210f0d
     padding: 10px;
   }
 
+  .postHeader:hover {
+    color: #9d9c9e;
+  }
+
   .postedBy {
   margin: 0;
     font-size:x-small;

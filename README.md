@@ -3,16 +3,16 @@
 ## Description
 
 > ### What was your motivation?
-> 
+> To see what its like to build a full web stack app using all types of routes.
 
 > ### Why did you build this project?
-> 
+> To learn how to use express-sessions, handlebars, and many other npm packages
 
 > ### What problem does it solve?
-> 
+> Creating a full web app with all CRUD functions
 
 > ### What did you learn?
-> 
+> How to set up a MVC express/node app. I learned all the necessary steps needed to build out a fully functioning app.
   
 
 ## Table of Contents
@@ -24,11 +24,13 @@
 
 
 ## Installation
+
+NPM Packages used were - bcrypt, dayjs, dotenv, express, express-handlebars, express-session, mysql2, sequelize
 -
 
 ## Usage
 
-
+![Alt text](public/Assets/module14_preview.png)
 
 
 
@@ -56,4 +58,3 @@ https://github.com/rodolfoespinosa01
 https://github.com/rodolfoespinosa01/bc_c14_mvc
 
 ## Video walkthrough
-https://www.loom.com/share/0e0fe9c1be6c4f90a2fddafeafe16427

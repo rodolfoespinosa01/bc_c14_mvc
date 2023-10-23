@@ -6,7 +6,7 @@
 </nav>
 </header>
 <div class="form-container">
-<form action="/updatePost/{{post.id}}" method="POST" class="post flexC">
+<form action="/deletePost/{{post.id}}" method="DELETE" class="post flexC">
   <div class="formHeader lightText darkBackground flexH">
     <h4>Edit Post</h4>
 
@@ -30,7 +30,7 @@
       <button id="update" type="submit" class="formButton">Update</button>
     </div>
     <div class="flexC">
-      <button id="delete" type="submit" class="formButton" formaction="/deletePost/{{post.id}}">Delete</button>
+      <button id="delete" type="submit" class="formButton" >Delete</button>
     </div>
   
   </div>
